@@ -54,21 +54,15 @@ ________________________________________________________________________________
 -Diagrama de Sequência
 ![image](https://github.com/pedrooaflima/Flute-Hero/assets/111537197/dff6f422-3276-4aad-9fa0-f31a595cf011)
 
--Diagrama de Comunicação
-
--Diagrama de Atividades
-
 
 -------------------------------------------------------------------Visão de Desenvolvimento-------------------------------------------------------------
 
 
 
--Diagrama de Pacotes
-
 -Diagrama de Componentes
 ![image](https://github.com/pedrooaflima/Flute-Hero/assets/111537197/f153860a-fe4b-4b5d-b069-ecdbc7e852ae) 
 
--Diagrama de Deployment
+
 
 
 
