@@ -21,3 +21,6 @@ https://miro.com/welcomeonboard/ajhjbDZsaldjOUdPc3ZaTHE0TGd5Z0N5d2szeHdwMGF4Z1da
 
 Link do YouTube:
 https://youtu.be/NbjoifqFuA8
+
+![WhatsApp Image 2024-03-20 at 18 46 53](https://github.com/pedrooaflima/Flute-Hero/assets/111537197/f0472567-ee28-450b-84a0-b827d888562c)
+
