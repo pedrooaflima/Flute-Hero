@@ -45,6 +45,12 @@ ________________________________________________________________________________
 -Diagrama de Classes de Domínio
 ![image](https://github.com/pedrooaflima/Flute-Hero/assets/111537197/26bfcf86-d74a-4836-9ba9-7e1e06b15b80)
 
+
+
+
+---------------------------------------------------------------------Visão de Processos-------------------------------------------------------------------
+
+
 -Diagrama de Sequência
 ![image](https://github.com/pedrooaflima/Flute-Hero/assets/111537197/dff6f422-3276-4aad-9fa0-f31a595cf011)
 
