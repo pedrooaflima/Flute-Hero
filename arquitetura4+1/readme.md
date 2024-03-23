@@ -17,7 +17,8 @@
 ![image](https://github.com/pedrooaflima/Flute-Hero/assets/111537197/0cff5b77-86a2-49d1-8f54-837624b021e0)
 
 -Diagrama de Classes de Domínio
-![image](https://github.com/pedrooaflima/Flute-Hero/assets/111537197/26bfcf86-d74a-4836-9ba9-7e1e06b15b80)
+![Diagrama de classe - FLUTEHERO](https://github.com/pedrooaflima/Flute-Hero/assets/88861376/a7b5c03c-1461-48c6-8d41-43eda34f9b1e)
+
 
 
 
