@@ -1,7 +1,8 @@
 ---------------------------------------------------------------------Cenários de Negócio--------------------------------------------------------------
 
 -Diagrama de Casos de Uso
-![image](https://github.com/pedrooaflima/Flute-Hero/assets/111537197/cc7fabf9-d833-4262-9f6e-24ecdaa95de9)
+![image](https://github.com/pedrooaflima/Flute-Hero/assets/88861376/10e1b0ed-b44d-4835-8074-837f8be58f25)
+
 
 
 
