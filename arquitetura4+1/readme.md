@@ -15,7 +15,8 @@
 
 
 -Diagrama de Estados
-![image](https://github.com/pedrooaflima/Flute-Hero/assets/111537197/0cff5b77-86a2-49d1-8f54-837624b021e0)
+![Diagrama de classe - FLUTEHERO (2)](https://github.com/pedrooaflima/Flute-Hero/assets/88861376/99ac1d4b-ca6b-4160-9f49-d7041a6ad3b6)
+
 
 -Diagrama de Classes de Domínio
 ![Diagrama de classe - FLUTEHERO](https://github.com/pedrooaflima/Flute-Hero/assets/88861376/a7b5c03c-1461-48c6-8d41-43eda34f9b1e)
