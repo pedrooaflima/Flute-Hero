@@ -37,7 +37,8 @@
 
 
 -Diagrama de Componentes
-![image](https://github.com/pedrooaflima/Flute-Hero/assets/111537197/f153860a-fe4b-4b5d-b069-ecdbc7e852ae) 
+![image](https://github.com/pedrooaflima/Flute-Hero/assets/88861376/28c835d1-9501-4476-b35a-f1afa7a996af)
+
 
 
 
