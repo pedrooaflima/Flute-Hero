@@ -48,6 +48,7 @@
 
 
 -Diagrama de Deployment
-![image](https://github.com/pedrooaflima/Flute-Hero/assets/88861376/ff469597-8c55-4763-a622-29ce3356f1b7)
+![image](https://github.com/pedrooaflima/Flute-Hero/assets/88861376/83952728-e70e-4388-8b8c-6bd1f914a923)
+
 
 
