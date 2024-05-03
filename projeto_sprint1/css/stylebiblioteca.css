@@ -1,0 +1,37 @@
+main {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+  
+.song {
+    width: 250px;
+    height: 200px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.song strong{
+    font-size: 1.2em;
+}
+
+.song a {
+    color: blue;
+    text-decoration: none;
+}
+  
+.song a:hover {
+    text-decoration: underline;
+}
+  
+#musicList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
