@@ -1,3 +1,8 @@
+.disabled {
+    pointer-events: none; /* Desabilita eventos de clique */
+    opacity: 0.5; /* Opacidade reduzida para indicar visualmente que está desabilitado */
+}
+
 #div-agenda{
     display: flex;
     margin: 0 auto;
