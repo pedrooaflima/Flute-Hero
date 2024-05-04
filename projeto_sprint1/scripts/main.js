@@ -7,21 +7,19 @@ let events = localStorage.getItem('events') ? JSON.parse(localStorage.getItem('e
 const newEvent = document.getElementById('newEventModal');
 const deleteEventModal = document.getElementById('deleteEventModal');
 const backDrop = document.getElementById('modalBackDrop');
-const eventTitleInput = document.getElementById('eventTitleInput');
-const calendar = document.getElementById('calendar'); // div calendar
-const weekdays = ['domingo','segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado']; // Array with weekdays
+const calendar = document.getElementById('calendar');
+const weekdays = ['domingo','segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'];
 
-// Funções
-
-// Função para abrir o modal
+// Função para abrir o modal com seleção de horário
 function openModal(date) {
     clicked = date;
     const eventDay = events.find((event) => event.date === clicked);
 
     if (eventDay) {
-        document.getElementById('eventText').innerText = eventDay.title;
+        document.getElementById('eventText').innerText = eventDay.hour + ':00 - ' + eventDay.title;
         deleteEventModal.style.display = 'block';
     } else {
+        // Exibir janela de novo evento
         newEvent.style.display = 'block';
     }
 
@@ -81,7 +79,7 @@ function load() {
             if (eventDay) {
                 const eventDiv = document.createElement('div');
                 eventDiv.classList.add('event');
-                eventDiv.innerText = eventDay.title;
+                eventDiv.innerText = eventDay.hour + ':00 - ' + eventDay.title;
                 dayS.appendChild(eventDiv);
             }
 
@@ -96,30 +94,27 @@ function load() {
 
 // Função para fechar o modal
 function closeModal() {
-    eventTitleInput.classList.remove('error');
     newEvent.style.display = 'none';
-    backDrop.style.display = 'none';
     deleteEventModal.style.display = 'none';
+    backDrop.style.display = 'none';
 
-    eventTitleInput.value = '';
     clicked = null;
     load();
 }
 
-// Função para salvar evento
+// Função para salvar evento com horário selecionado
 function saveEvent() {
-    if (eventTitleInput.value) {
-        eventTitleInput.classList.remove('error');
-
+    const hour = document.getElementById('hourSelection').value;
+    if (hour) {
         events.push({
             date: clicked,
-            title: eventTitleInput.value
+            hour: hour
         });
 
         localStorage.setItem('events', JSON.stringify(events));
         closeModal();
     } else {
-        eventTitleInput.classList.add('error');
+        alert('Selecione um horário válido.');
     }
 }
 
@@ -142,10 +137,10 @@ function buttons() {
         load();
     });
 
-    document.getElementById('saveButton').addEventListener('click', () => saveEvent());
     document.getElementById('cancelButton').addEventListener('click', () => closeModal());
-    document.getElementById('deleteButton').addEventListener('click', () => deleteEvent());
     document.getElementById('closeButton').addEventListener('click', () => closeModal());
+    document.getElementById('saveButton').addEventListener('click', () => saveEvent());
+    document.getElementById('deleteButton').addEventListener('click', () => deleteEvent()); // Associando evento ao botão de deletar
 }
 
 // Inicialização dos botões e carregamento do calendário
