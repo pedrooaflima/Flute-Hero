@@ -1,0 +1,81 @@
+/* Estilos CSS para as sessões */
+main {
+    display: flex; /* Utiliza o modelo de layout flexível */
+    flex-wrap: wrap; /* Permite que as sessões quebrem para a próxima linha quando não couberem mais na largura */
+    min-height: 100vh; /* Garante que o main ocupe pelo menos toda a altura da janela do navegador */
+}
+  
+section {
+    flex-grow: 1; /* Faz cada sessão crescer horizontalmente */
+    padding: 20px; /* Adiciona espaçamento interno */
+    margin: 10px; /* Adiciona espaçamento externo */
+    min-width: 300px; /* Largura mínima para evitar que as sessões fiquem muito estreitas */
+}
+  
+/* Estilos para cada atividade */
+.atividade {
+    background-color: #ffffff; /* Cor de fundo */
+    border: 1px solid #cccccc; /* Borda */
+    padding: 20px; /* Espaçamento interno */
+    margin-bottom: 10px; /* Espaçamento externo na parte inferior */
+    width: calc(60% - 20px); /* Largura de 1/3 da largura da sessão com espaçamento */
+    box-sizing: border-box; /* Inclui padding e border na largura */
+    text-align: center; /* Alinhamento de texto centralizado */
+}
+
+.aula {
+    background-color: #ffffff; /* Cor de fundo */
+    border: 1px solid #cccccc; /* Borda */
+    padding: 20px; /* Espaçamento interno */
+    margin-bottom: 10px; /* Espaçamento externo na parte inferior */
+    width: calc(60% - 20px); /* Largura de 1/3 da largura da sessão com espaçamento */
+    box-sizing: border-box; /* Inclui padding e border na largura */
+    text-align: center; /* Alinhamento de texto centralizado */
+}
+
+/* Estilo para a sessão de tarefas realizadas */
+#tarefas-proxima-aula {
+    display: flex; /* Utiliza o modelo de layout flexível */
+    flex-direction: column; /* Direção das atividades na vertical */
+    align-items: center; /* Alinha as atividades horizontalmente */
+}
+  
+#aulas-realizadas {
+    background-color: #e6f7ff; /* Background color para tarefas próxima aula */
+    display: flex; /* Utiliza o modelo de layout flexível */
+    flex-direction: column; /* Direção das atividades na vertical */
+    align-items: center; /* Alinha as atividades horizontalmente */
+}
+  
+#feedbacks {
+    background-color: #fff2e6; /* Background color para feedbacks */
+    display: flex; /* Utiliza o modelo de layout flexível */
+    flex-direction: column; /* Direção das atividades na vertical */
+    align-items: center; /* Alinha as atividades horizontalmente */
+}
+
+/* Estilos para cada sessão */
+#tarefas-proxima-aula {
+    background-color: #f0f0f0; /* Background color para tarefas realizadas */
+}
+
+/* Estilos para cada botão Concluído */
+.concluir-btn {
+    background-color: #4CAF50; /* Cor de fundo verde */
+    color: white; /* Cor do texto branca */
+    border: none; /* Remove a borda */
+    padding: 10px 20px; /* Espaçamento interno */
+    text-align: center; /* Alinhamento de texto centralizado */
+    text-decoration: none; /* Remove sublinhado padrão */
+    display: inline-block; /* Exibe como elemento em linha */
+    font-size: 16px; /* Tamanho da fonte */
+    margin-top: 10px; /* Espaçamento superior */
+    cursor: pointer; /* Altera o cursor para indicar interatividade */
+    border-radius: 5px; /* Borda arredondada */
+    transition: background-color 0.3s; /* Adiciona transição suave na mudança de cor de fundo */
+}
+
+/* Estilo de hover para o botão Concluído */
+.concluir-btn:hover {
+    background-color: #45a049; /* Cor de fundo verde mais escura ao passar o mouse */
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- arquivos style -->
+  <link href="./css/style.css" rel="stylesheet">
+  <link href="./css/stylebiblioteca.css" rel="stylesheet">
+
+  <title>Flute Hero</title>
+</head>
+
+<body>
+  <header>
+    <div id="texto-header">
+      <a href="index.html"><h1>Flute Hero</h1><img src="imagens/img-header.jpg"></a>
+    </div>
+    
+    <ul id="sessoes-site">
+      <a href="agenda.html"><li>Agenda</li></a>
+      <a href="biblioteca.html"><li>Biblioteca musical</li></a>
+      <a href="exercicios.html"><li>Exercicios</li></a>
+      <a href="login.html" id="login"><li><img src="imagens/login.webp"><p>Entrar</p></li></a>
+    </ul>
+  </header>
+
+  <h1 id="titulo-main">Biblioteca Musical</h1>
+  <main>
+    <!-- Dropdown de alunos -->
+    <div id="studentSearch">Alunos:
+      <select id="studentSelect" onchange="selectStudent(this)">
+        <option value="" disabled selected>Selecione um aluno</option>
+        <!-- Opções de alunos serão adicionadas aqui via JavaScript -->
+      </select>
+    </div>
+
+    <!-- Lista de músicas -->
+    <div id="musicList">
+      <!-- As músicas serão adicionadas aqui via JavaScript -->
+    </div>
+
+    <script src="scripts/biblioteca.js"></script>
+  </main>
+</body>
+</html>

@@ -1,0 +1,62 @@
+main {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+  
+.song {
+    width: 250px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.song strong {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.song a {
+    color: blue;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.song a:hover {
+    text-decoration: underline;
+}
+
+#musicList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.atividadeForm {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.atividadeForm label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.atividadeForm input[type="date"] {
+    margin-bottom: 10px;
+    width: 80%;
+    padding: 5px;
+}
+
+.atividadeForm button {
+    padding: 5px 10px;
+    width: 100%;
+}
