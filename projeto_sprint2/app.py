@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import mysql.connector
+from datetime import datetime
 
 app = Flask(__name__)
 CORS(app)
@@ -97,7 +98,7 @@ def get_aulas_realizadas():
     cursor = mydb.cursor(dictionary=True)
     try:
         query = """
-        SELECT ar.data_aula, ar.instrumento, a.nome as nome_aluno, p.nome as nome_professor
+        SELECT ar.data_aula, ar.instrumento, a.nome as nome_aluno, p.nome as nome_professor, ar.id
         FROM aulas_realizadas ar
         JOIN alunos a ON ar.id_aluno = a.id
         JOIN professor p ON ar.id_professor = p.id
@@ -109,6 +110,58 @@ def get_aulas_realizadas():
         return jsonify({"error": str(err)}), 500
     finally:
         cursor.close()
+
+# Rota para adicionar feedback
+@app.route('/api/feedback', methods=['POST'])
+def add_feedback():
+    data = request.json
+    print('Dados recebidos:', data)  # Log dos dados recebidos
+
+    aula_id = data.get('aula_id')
+    comentario = data.get('comentario')
+    data_comentario = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+    print(f'aula_id: {aula_id}, comentario: {comentario}, data_comentario: {data_comentario}')  # Log dos valores extraídos
+
+    if not all([aula_id, comentario]):
+        return jsonify({'error': 'Faltam dados'}), 400
+
+    cursor = mydb.cursor()
+    try:
+        query = """
+        INSERT INTO feedbacks (aula_id, comentario, data_comentario)
+        VALUES (%s, %s, %s)
+        """
+        cursor.execute(query, (aula_id, comentario, data_comentario))
+        mydb.commit()
+        print('Feedback inserido com sucesso')  # Log de sucesso
+    except mysql.connector.Error as err:
+        print('Erro ao inserir feedback:', err)  # Log do erro
+        return jsonify({"error": str(err)}), 500
+    finally:
+        cursor.close()
+
+    return jsonify({'message': 'Feedback enviado com sucesso!'}), 201
+
+@app.route('/api/feedbacks', methods=['GET'])
+def get_feedbacks():
+    cursor = mydb.cursor(dictionary=True)
+    try:
+        query = """
+        SELECT ar.data_aula, p.nome as nome, a.nome as nome_aluno, ar.instrumento, f.comentario
+        FROM feedbacks f
+        JOIN aulas_realizadas ar ON f.aula_id = ar.id
+        JOIN alunos a ON ar.id_aluno = a.id
+        JOIN professor p ON ar.id_professor = p.id
+        """
+        cursor.execute(query)
+        feedbacks = cursor.fetchall()
+        return jsonify(feedbacks)
+    except mysql.connector.Error as err:
+        return jsonify({"error": str(err)}), 500
+    finally:
+        cursor.close()
+
 
 if __name__ == '__main__':
     app.run(debug=True)
