@@ -1,3 +1,9 @@
+'''
+USE: 
+pip install -r requirements.txt
+para instalar todas as bibliotecas 
+'''
+
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 import mysql.connector
