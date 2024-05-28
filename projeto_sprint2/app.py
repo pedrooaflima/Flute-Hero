@@ -6,43 +6,52 @@ from datetime import datetime
 app = Flask(__name__)
 CORS(app)
 
-# Conexão com o banco de dados MySQL
-mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="mklein2505",
-    database="biblioteca_musicas"
-)
+def get_db_connection():
+    return mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="mklein2505",
+        database="biblioteca_musicas"
+    )
 
 # Rota para obter todas as músicas
 @app.route('/api/music', methods=['GET'])
 def get_music():
+    mydb = get_db_connection()
     cursor = mydb.cursor(dictionary=True)
     try:
         cursor.execute("SELECT * FROM musicas")
         musicas = cursor.fetchall()
+        print("Músicas retornadas:", musicas)  # Log dos dados retornados
         return jsonify(musicas)
     except mysql.connector.Error as err:
+        print("Erro ao buscar músicas:", err)  # Log de erro
         return jsonify({"error": str(err)}), 500
     finally:
         cursor.close()
+        mydb.close()
 
 # Rota para obter todos os alunos
 @app.route('/api/students', methods=['GET'])
 def get_students():
+    mydb = get_db_connection()
     cursor = mydb.cursor(dictionary=True)
     try:
         cursor.execute("SELECT * FROM alunos")
         alunos = cursor.fetchall()
+        print("Alunos retornados:", alunos)  # Log dos dados retornados
         return jsonify(alunos)
     except mysql.connector.Error as err:
+        print("Erro ao buscar alunos:", err)  # Log de erro
         return jsonify({"error": str(err)}), 500
     finally:
         cursor.close()
+        mydb.close()
 
 # Rota para adicionar uma nova atividade
 @app.route('/api/atividade', methods=['POST'])
 def add_atividade():
+    mydb = get_db_connection()
     data = request.json
     print('Recebido:', data)  # Adicione este log para verificar os dados recebidos
 
@@ -60,41 +69,55 @@ def add_atividade():
     INSERT INTO atividades (data_envio, nome_aluno, nome_musica, compositor, link)
     VALUES (%s, %s, %s, %s, %s)
     """
-    cursor.execute(query, (data_envio, nome_aluno, nome_musica, compositor, link_musica))
-    mydb.commit()
-    cursor.close()
-
-    return jsonify({'message': 'Atividade adicionada com sucesso!'}), 201
+    try:
+        cursor.execute(query, (data_envio, nome_aluno, nome_musica, compositor, link_musica))
+        mydb.commit()
+        return jsonify({'message': 'Atividade adicionada com sucesso!'}), 201
+    except mysql.connector.Error as err:
+        print("Erro ao adicionar atividade:", err)  # Log de erro
+        return jsonify({"error": str(err)}), 500
+    finally:
+        cursor.close()
+        mydb.close()
 
 # Rota para obter todas as atividades
 @app.route('/api/select_atv', methods=['GET'])
 def select_atividade():
+    mydb = get_db_connection()
     cursor = mydb.cursor(dictionary=True)
     try:
         cursor.execute("SELECT * FROM atividades")
         atividades = cursor.fetchall()
+        print("Atividades retornadas:", atividades)  # Log dos dados retornados
         return jsonify(atividades)
     except mysql.connector.Error as err:
+        print("Erro ao buscar atividades:", err)  # Log de erro
         return jsonify({"error": str(err)}), 500
     finally:
         cursor.close()
+        mydb.close()
 
 # Rota para deletar uma atividade
 @app.route('/api/delete_atv/<int:id>', methods=['DELETE'])
 def delete_atividade(id):
+    mydb = get_db_connection()
     cursor = mydb.cursor()
     try:
         query = "DELETE FROM atividades WHERE id = %s"
         cursor.execute(query, (id,))
         mydb.commit()
+        print(f"Atividade com id {id} excluída com sucesso!")  # Log de sucesso
         return jsonify({"message": "Atividade excluída com sucesso!"}), 200
     except mysql.connector.Error as err:
+        print(f"Erro ao excluir atividade com id {id}:", err)  # Log de erro
         return jsonify({"error": str(err)}), 500
     finally:
         cursor.close()
+        mydb.close()
 
 @app.route('/api/aulas_realizadas', methods=['GET'])
 def get_aulas_realizadas():
+    mydb = get_db_connection()
     cursor = mydb.cursor(dictionary=True)
     try:
         query = """
@@ -105,15 +128,19 @@ def get_aulas_realizadas():
         """
         cursor.execute(query)
         aulas = cursor.fetchall()
+        print("Aulas realizadas retornadas:", aulas)  # Log dos dados retornados
         return jsonify(aulas)
     except mysql.connector.Error as err:
+        print("Erro ao buscar aulas realizadas:", err)  # Log de erro
         return jsonify({"error": str(err)}), 500
     finally:
         cursor.close()
+        mydb.close()
 
 # Rota para adicionar feedback
 @app.route('/api/feedback', methods=['POST'])
 def add_feedback():
+    mydb = get_db_connection()
     data = request.json
     print('Dados recebidos:', data)  # Log dos dados recebidos
 
@@ -135,16 +162,17 @@ def add_feedback():
         cursor.execute(query, (aula_id, comentario, data_comentario))
         mydb.commit()
         print('Feedback inserido com sucesso')  # Log de sucesso
+        return jsonify({'message': 'Feedback enviado com sucesso!'}), 201
     except mysql.connector.Error as err:
         print('Erro ao inserir feedback:', err)  # Log do erro
         return jsonify({"error": str(err)}), 500
     finally:
         cursor.close()
-
-    return jsonify({'message': 'Feedback enviado com sucesso!'}), 201
+        mydb.close()
 
 @app.route('/api/feedbacks', methods=['GET'])
 def get_feedbacks():
+    mydb = get_db_connection()
     cursor = mydb.cursor(dictionary=True)
     try:
         query = """
@@ -156,12 +184,14 @@ def get_feedbacks():
         """
         cursor.execute(query)
         feedbacks = cursor.fetchall()
+        print("Feedbacks retornados:", feedbacks)  # Log dos dados retornados
         return jsonify(feedbacks)
     except mysql.connector.Error as err:
+        print("Erro ao buscar feedbacks:", err)  # Log de erro
         return jsonify({"error": str(err)}), 500
     finally:
         cursor.close()
-
+        mydb.close()
 
 if __name__ == '__main__':
     app.run(debug=True)
